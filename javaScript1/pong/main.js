@@ -1,3 +1,4 @@
+//Modelo
 (function(){
     self.Board = function(width, height){
         this.width = width;
@@ -26,18 +27,23 @@
         this.board = board;
         this.board.bars.push(this);
         this.kind = "rectangle";
+        this.speed=10;
     }
 
     self.Bar.prototype = {
       down: function(){
-
+        this.y +=this.speed;
       },
       up: function(){
-
+        this.y -=this.speed;
+      },
+      toString: function(){
+        return "x: "+ this.x +" y: "+ this.y;  
       }  
     }
 })();
 
+//Vista
 (function(){
     self.BoardView = function(canvas,board){
       this.canvas = canvas;
@@ -68,13 +74,28 @@ function draw(ctx,element){
 }    
 })();
 
+var board = new Board(800,400);
+var bar = new Bar(20,100,40,100,board);
+var bar = new Bar(740,100,40,100,board);
+var canvas = document.getElementById("canvas");
+var board_view = new BoardView(canvas,board);
+
+/*Evento que escucha el movimiento detectado con el movimiento de las teclas
+para el desplazamiento de las barras*/
+document.addEventListener("keydown",function(ev){
+    
+    if(ev.keyCode==38){
+        bar.up();
+    }
+    else if(ev.keyCode==40){
+        bar.down();
+    }
+    console.log(""+bar);
+});
 self.addEventListener("load", main);
 
+//Controlador
 function main(){
-    var board = new Board(800,400);
-    var bar = new Bar(20,100,40,100,board);
-    var bar = new Bar(740,100,40,100,board);
-    var canvas = document.getElementById("canvas");
-    var board_view = new BoardView(canvas,board);
+    
     board_view.draw();
 }
