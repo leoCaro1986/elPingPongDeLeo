@@ -60,6 +60,9 @@
       down: function(){
         this.y +=this.speed;
       },
+      collision: function(bar){
+        //reacciona a la colisión con una barra que recibe como parametro
+      },
       up: function(){
         this.y -=this.speed;
       },
@@ -90,6 +93,15 @@
                 draw(this.ctx, el);
             };
         },
+        check_collisions: function(){
+            for (var i = this.board.bars.length - 1; i >= 0; i--){
+                var bar = this.board.bars[i];
+
+               if(hit(bar, this.board.ball)){
+                 this.board.ball.collision(bar);
+               } 
+            };
+        },
         play: function(){
             if(this.board.playing){
                 this.clean();
@@ -98,6 +110,11 @@
             }
             
         }
+    }
+
+    function hit(a,b){
+        //revisa si a coliciona con b
+
     }
 
 function draw(ctx,element){
