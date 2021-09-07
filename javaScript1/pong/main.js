@@ -12,7 +12,7 @@
     self.Board.prototype = {
         get elements(){
             var elements =this.bars;
-            elements.push(this.ball);
+            //elements.push(this.ball);
             return elements;
         }
     }
@@ -52,7 +52,11 @@
       this.board = board;
       this.ctx = canvas.getContext("2d");
     }
+
     self.BoardView.prototype ={
+        clean: function(){
+            this.ctx.clearRect(0,0,this.board.width,this.board.height);
+        },
         draw: function(){
             for (var i = this.board.elements.length - 1; i >= 0; i--){
                 var el = this.board.elements[i];
@@ -63,39 +67,49 @@
     }
 
 function draw(ctx,element){
-  if(element != null && element.hasOwnProperty("kind")){
+  //if(element != null && element.hasOwnProperty("kind")){
     switch(element.kind){
         case "rectangle":
             ctx.fillRect(element.x, element.y,element.width,element.height);
             break;    
       } 
-  }  
+  //}  
    
 }    
 })();
 
 var board = new Board(800,400);
 var bar = new Bar(20,100,40,100,board);
-var bar = new Bar(740,100,40,100,board);
+var bar_2 = new Bar(740,100,40,100,board);
 var canvas = document.getElementById("canvas");
 var board_view = new BoardView(canvas,board);
+
 
 /*Evento que escucha el movimiento detectado con el movimiento de las teclas
 para el desplazamiento de las barras*/
 document.addEventListener("keydown",function(ev){
-    
+    ev.preventDefault();
     if(ev.keyCode==38){
         bar.up();
     }
     else if(ev.keyCode==40){
         bar.down();
+    }else if(ev.keyCode===87){
+        //w
+        bar_2.up();
+    }else if(ev.keyCode===83){
+        //s
+        bar_2.down();
     }
-    console.log(""+bar);
-});
-self.addEventListener("load", main);
 
-//Controlador
-function main(){
+
     
+});
+//self.addEventListener("load", main);
+window.requestAnimationFrame(controller);
+//Controlador
+function controller(){
+    board_view.clean();
     board_view.draw();
+    window.requestAnimationFrame(controller);
 }
