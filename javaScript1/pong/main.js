@@ -19,6 +19,15 @@
 })();
 
 (function(){
+    self.ball = function(x,y,radius,board){
+        this.x = x;
+        this.y = y;
+        this.radius = radius;
+        this.board = board;
+    }
+})();
+
+(function(){
     self.Bar=function(x,y,width,height,board){
         this.x = x;
         this.y = y;
@@ -63,6 +72,10 @@
 
                 draw(this.ctx, el);
             };
+        },
+        play: function(){
+            this.clean();
+            this.draw();
         }
     }
 
@@ -109,7 +122,6 @@ document.addEventListener("keydown",function(ev){
 window.requestAnimationFrame(controller);
 //Controlador
 function controller(){
-    board_view.clean();
-    board_view.draw();
+    board_view.play();
     window.requestAnimationFrame(controller);
 }
