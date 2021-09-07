@@ -114,7 +114,24 @@
 
     function hit(a,b){
         //revisa si a coliciona con b
-
+        var hit = false;
+        //colisiones orizontales
+        if(b.x + b.width >= a.x && b.x < a.x + a.width){
+            //colisiones verticales
+            if(b.y + b.height >= a.y && b.y < a.y + a.height)
+            hit = true;
+        }
+        //colición de a con b
+        if(b.x <=a.x && b.x + b.width >= a.x + a.width){
+            if(b.y <= a.y && b.y + b.height >= a.y + a.height)
+            hit=true;
+        }
+        //colicion b con a 
+        if(a.x <= b.x && a.x + a.width >= b.x + a.width){
+            if(a.y <= b.y && a.y + a.height >= b.y + a.height)
+            hit = true;
+        }
+        return hit;
     }
 
 function draw(ctx,element){
