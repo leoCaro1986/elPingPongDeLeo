@@ -4,25 +4,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous" />
     <title>Ping Pong</title>
     <link rel="stylesheet" href="./style.css">
     <style>
         canvas{ border: solid; background-color: cadetblue; }
     </style>
 </head>
-<body>
+<body class="body">
     <div>
-        <h1>EL Ping Pong de Leo</h1>
-        <ul><h3>Reglas</h3>
-            <li>Barra espaciadora para iniciar</li>
-            <li>Jugador 1 presiona teclas "w" y "s" para subir y bajar</li>
-            <li>Jugador 1 presiona teclas Arriba y A bajo para subir y bajar</li>
+        <h1 class="textCenter">EL Ping Pong de Leo</h1>
+        <ul class="lista"><h3>Reglas</h3>
+            <h4>Barra espaciadora para iniciar</h4>
+            <h4>Jugador 1 presiona teclas "w" y "s" para subir y bajar</h4>
+            <h4>Jugador 1 presiona teclas Arriba y Abajo para subir y bajar</h4>
         </ul>
     </div>
     <div class = 'padre'>
         <canvas id="canvas" ></canvas>
-        <script src="main.js"></script>
     </div>
-    
+    <script src="main.js"></script>
 </body>
 </html>

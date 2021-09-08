@@ -1,4 +1,19 @@
+.body{
+    background-color: rgb(228, 226, 210);
+}
+
 .padre {
-    align-items: center;
+    
     padding: 30px;
+  }
+  
+  .textCenter{
+      text-align: center;
+  }
+  .lista{
+      text-align: center;
+  }
+
+  #canvas{
+     margin-left: 280px;
   }

@@ -202,6 +202,7 @@ function draw(ctx,element){
             ctx.fill();
             ctx.fillStyle = "green";
             ctx.closePath();    
+            
             break;   
       } 
  
