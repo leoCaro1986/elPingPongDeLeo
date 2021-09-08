@@ -12,18 +12,29 @@
         canvas{ border: solid; background-color: cadetblue; }
     </style>
 </head>
+
 <body class="body">
-    <div>
-        <h1 class="textCenter">EL Ping Pong de Leo</h1>
+    <div class="container">Pong de Leo</h1>
         <ul class="lista"><h3>Reglas</h3>
-            <h4>Barra espaciadora para iniciar</h4>
-            <h4>Jugador 1 presiona teclas "w" y "s" para subir y bajar</h4>
-            <h4>Jugador 1 presiona teclas Arriba y Abajo para subir y bajar</h4>
+            <h5>Barra espaciadora para iniciar</h5>
+            <h5>Jugador 1 presiona teclas "w" y "s" para subir y bajar</h5>
+            <h5>Jugador 2 presiona teclas Arriba y Abajo para subir y bajar</h5>
         </ul>
+        <div class="row">
+            <div class="col">
+                <h3 class="jugador_1">Jugador 1</h3>
+                <h2 type="number" class="puntajeJugador1" size = "10" style="width : 50px;">0</h2>
+            </div>
+            <div class="col">
+                <h3 class="jugador_2">Jugador 2</h3>  
+                <h3 type="number" class="puntajeJugador2" size = "10" style="width : 50px;">0</h2>
+            </div>  
+        </div>
     </div>
     <div class = 'padre'>
         <canvas id="canvas" ></canvas>
     </div>
+
     <script src="main.js"></script>
 </body>
 </html>

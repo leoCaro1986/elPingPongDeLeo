@@ -115,6 +115,9 @@
             };
         },
         check_collisions: function(){
+            puntajes_jugador1 = document.querySelector(".puntajeJugador1");
+            puntajes_jugador2 = document.querySelector(".puntajeJugador2");
+
             for (var i = this.board.bars.length - 1; i >= 0; i--){
                 var bar = this.board.bars[i];
 
@@ -140,6 +143,7 @@
                 this.board.ball.speed=3;
                 board_view.draw();  
                 this.board.ball.speed_x =this.board.ball.speed_x * -1;
+                puntajes_jugador1.innerHTML=(Number(puntajes_jugador1.innerHTML)+1);
    
             }
             if(this.board.ball.x <= -15)
@@ -153,6 +157,7 @@
                 this.board.ball.speed=3;
                 board_view.draw();      
                 this.board.ball.speed_x =this.board.ball.speed_x * -1;
+                puntajes_jugador2.innerHTML=(Number(puntajes_jugador2.innerHTML)+1);
                 
             }
             
