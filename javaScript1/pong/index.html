@@ -5,13 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ping Pong</title>
+    <link rel="stylesheet" href="./style.css">
     <style>
-        canvas{ border: solid;}
+        canvas{ border: solid; background-color: cadetblue; }
     </style>
 </head>
 <body>
-    <h1>EL Ping Pong de Leo</h1>
-    <canvas id="canvas"></canvas>
-    <script src="main.js"></script>
+    <div>
+        <h1>EL Ping Pong de Leo</h1>
+        <ul><h3>Reglas</h3>
+            <li>Barra espaciadora para iniciar</li>
+            <li>Jugador 1 presiona teclas "w" y "s" para subir y bajar</li>
+            <li>Jugador 1 presiona teclas Arriba y A bajo para subir y bajar</li>
+        </ul>
+    </div>
+    <div class = 'padre'>
+        <canvas id="canvas" ></canvas>
+        <script src="main.js"></script>
+    </div>
+    
 </body>
 </html>

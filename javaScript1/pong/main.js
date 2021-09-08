@@ -49,7 +49,7 @@
         get height(){
             return this.radius * 2;
         },
-        collision: function(bar){
+        collision: function(bar, board){
             //reacción a la colisión
             var relative_intersect_y =(bar.y +(bar.height / 2)) - this.y;
             var normalized_intersect_y = relative_intersect_y / (bar.height / 2);
@@ -82,7 +82,7 @@
         this.y +=this.speed;
       },
       collision: function(bar){
-        //reacciona a la colisión con una barra que recibe como parametro
+//reacciona a la colisión con una barra que recibe como parametro
       },
       up: function(){
         this.y -=this.speed;
@@ -122,6 +122,40 @@
                  this.board.ball.collision(bar);
                } 
             };
+            if(this.board.ball.y <= 15)
+            {
+                this.board.ball.speed_y =this.board.ball.speed_y * -1;
+            }
+            if(this.board.ball.y >= 385)
+            {
+                this.board.ball.speed_y =this.board.ball.speed_y * -1;
+            }
+            if(this.board.ball.x >= 815)
+            {
+                board.playing = !board.playing;
+                this.board.ball.x = 350;
+                this.board.ball.y = 150;
+                //this.board.bar.y = 100;
+                alert("perdio jugador 2");
+                this.board.ball.speed=3;
+                board_view.draw();  
+                this.board.ball.speed_x =this.board.ball.speed_x * -1;
+   
+            }
+            if(this.board.ball.x <= -15)
+            {
+                
+                board.playing = !board.playing;
+                this.board.ball.x = 350;
+                this.board.ball.y = 150;
+                this.board.bars.y = 100;
+                alert("perdio jugador 1");
+                this.board.ball.speed=3;
+                board_view.draw();      
+                this.board.ball.speed_x =this.board.ball.speed_x * -1;
+                
+            }
+            
         },
         play: function(){
             if(this.board.playing){
@@ -157,29 +191,30 @@
     }
 
 function draw(ctx,element){
-  //if(element != null && element.hasOwnProperty("kind")){
+  
     switch(element.kind){
         case "rectangle":
             ctx.fillRect(element.x, element.y,element.width,element.height);
             break;
         case "circle":
             ctx.beginPath();
-            ctx.arc(element.x, element.y, element.radius, 0, 7); 
+            ctx.arc(element.x, element.y, element.radius, 0, 9); 
             ctx.fill();
+            ctx.fillStyle = "green";
             ctx.closePath();    
             break;   
       } 
-  //}  
+ 
    
 }    
 })();
 
 var board = new Board(800,400);
-var bar = new Bar(20,100,40,100,board);
-var bar_2 = new Bar(740,100,40,100,board);
+var bar = new Bar(20,140,40,100,board);
+var bar_2 = new Bar(740,140,40,100,board);
 var canvas = document.getElementById("canvas");
 var board_view = new BoardView(canvas,board);
-var ball = new ball(400, 80, 10, board);
+var ball = new ball(400, 190, 15, board);
 
 
 /*Evento que escucha el movimiento detectado con el movimiento de las teclas
@@ -206,7 +241,6 @@ document.addEventListener("keydown",function(ev){
 
 board_view.draw();
 
-//self.addEventListener("load", main);
 window.requestAnimationFrame(controller);
 
 
